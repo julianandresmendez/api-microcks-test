@@ -1,0 +1,131 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "Tienda API",
+        "version": "1.0.0",
+        "license": {
+            "name": "Mozilla 2.0",
+            "url": "https://www.mozilla.org/en-US/MPL/2.0/"
+        }
+    },
+    "paths": {
+        "/direccion": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/direccion"
+                                    }
+                                }
+                            }
+                        },
+                        "description": "devuelve la lista"
+                    }
+                },
+                "summary": "obtener lista de direccion"
+            },
+            "post": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/direccion"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "esta creado el item"
+                    }
+                },
+                "summary": "crear direccion"
+            }
+        },
+        "/direccion/{direccionId}": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/direccion"
+                                }
+                            }
+                        },
+                        "description": "obtenida la direccion"
+                    }
+                },
+                "summary": "obtener dirección de ID"
+            },
+            "put": {
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/direccion"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Direccion actualizada "
+                    }
+                },
+                "summary": "actualizada la direccion"
+            },
+            "delete": {
+                "responses": {
+                    "204": {
+                        "description": "direccion eliminada"
+                    }
+                },
+                "summary": "eliminar direccion de ID"
+            },
+            "parameters": [
+                {
+                    "name": "direccionId",
+                    "schema": {
+                        "type": "integer"
+                    },
+                    "in": "path",
+                    "required": true
+                }
+            ]
+        }
+    },
+    "components": {
+        "schemas": {
+            "direccion": {
+                "title": "Root Type for direccion",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "format": "int32",
+                        "type": "integer"
+                    }
+                },
+                "example": {
+                    "id": 1,
+                    "type": "capacitor",
+                    "size": 100
+                }
+            }
+        }
+    }
+}
